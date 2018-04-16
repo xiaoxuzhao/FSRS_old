@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Apr 11 10:03:09 2018
-
-@author: zdong
+plot sites of temp depth catch 
+@author: XIAOXU ZHAO
 """
 
 from mpl_toolkits.axes_grid1 import host_subplot
@@ -44,7 +44,7 @@ for i in range(len(Lat)):
     if lat[s]==Lat[i] and lon[s]==Lon[i]:
         c.append(i)
 latitude,longitude,depth,tem,catch,date=[],[],[],[],[],[]
-c=c[0:5]+c[9:-4]
+#c=c[0:5]+c[9:-4]
 for s in c:
     latitude.append(Lat[s])
     longitude.append(Lon[s])
@@ -68,7 +68,7 @@ data={'Latitude':np.array(latitude),
 frame=DataFrame(data,columns=['Latitude','Longitude','Date',
                               'Depth','Bottom temperature',
                               'catchcount'],index=c)                              
-frame.to_csv(input_dir+"site_97_temp_depth.csv")
+frame.to_csv(input_dir+"site_"+index_mt3[s]+"_temp_depth.csv")
 
 host = host_subplot(111, axes_class=AA.Axes)
 plt.subplots_adjust(right=0.75)
@@ -95,7 +95,7 @@ p3, = par2.plot(D, catch,'b.', label="Catch")
 #host.xticks(pd.date_range('2018-01-01','2009-05-1'),rotation=90)
 host.set_xticks(['2012','2013','2014'])
 #'2004','2005','2006','2007','2008','2009','2010',
-host.set_title("the site 97 Temperature ,Depth and catch")
+host.set_title("the site"+index_mt3[s]+"Temperature ,Depth and catch")
 
 host.legend(loc=9,fontsize=6)
 
@@ -103,5 +103,5 @@ host.axis["left"].label.set_color(p1.get_color())
 par1.axis["right"].label.set_color(p2.get_color())
 par2.axis["right"].label.set_color(p3.get_color())
 
-plt.savefig(save_dir+"97_site_temperature_depth_catch.png")
+plt.savefig(save_dir+index_mt3[s]+"_site_temperature_depth_catch.png")
 plt.show()
