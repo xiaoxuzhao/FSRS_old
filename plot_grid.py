@@ -32,31 +32,15 @@ my_map.fillcontinents(color = 'gray')
 my_map.drawmapboundary()
 x,y=my_map(dfGrid['X'].values,dfGrid['Y'].values)
 ###########
-#remove duplicate elements from the list
-S=[]
-for a in SID:
-    if a not in S:
-        S.append(a)
-###########
-#SID="348" plot lines
-s,d=0,0
-for i in range(len(SID)):
-       if S[s]==SID[i]:
-           d+=1
-my_map.plot(x[s:s+d],y[s:s+d], '-', markersize=10, linewidth=2, color='r', markerfacecolor='b')
-###############
-c=0
-for s in range(1,len(S)):
-    c+=d
-    d=0
-    for i in range(len(SID)):
-       if S[s]==SID[i]:
-           d+=1
-    my_map.plot(x[c:c+d],y[c:c+d], '-', markersize=10, linewidth=2, color='r', markerfacecolor='b')
+# find distinct SIDs and then plot each one
+S=list(set(SID)
+for s in range(0,len(S)):
+    id=list(np.where(SID==S[s])[0])
+    my_map.plot(x[id],y[id], '-', markersize=10, linewidth=2, color='r', markerfacecolor='b')
 ##################
 my_map.drawcoastlines() 
 plt.title('Lobster Fishing areas',fontsize=20) 
 my_map.drawparallels(np.arange(40,80,3),labels=[1,0,0,0])
 my_map.drawmeridians(np.arange(-180,180,3),labels=[1,1,0,1])
-plt.savefig(save_dir+'lobster_fishing_areas)',dpi=200) 
+plt.savefig(save_dir+'lobster_fishing_areas.png',dpi=200) 
 plt.show()
