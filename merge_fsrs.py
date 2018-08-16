@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Jan 25 14:55:28 2018
-
+To run this file,you need these input files:
+1.CTSscalarstats_4589.txt
 @author: xiaoxu
 """
 from pandas import read_csv
@@ -57,7 +58,7 @@ mean_t=df_scalar["Mean"]
 stdev_t=df_scalar["Stdev"]
 num_df_sites=len(indexs)
 num_row_near=df_sites["num_row_near"]
-Event_spec,Latitude,Longitude,Date,num_date,Dep,Min_t,Max_t,Mean_t,Stdev_t,Index_first=[],[],[],[],[],[],[],[],[],[],[],[]
+Event_spec,Latitude,Longitude,Date,num_date,Dep,Min_t,Max_t,Mean_t,Stdev_t,Index_first=[],[],[],[],[],[],[],[],[],[],[]
 for i in index_site:
      Event_spec.append(event_spec[i])
      Latitude.append(lat[i])
