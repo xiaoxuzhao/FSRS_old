@@ -1,5 +1,7 @@
 """
 Created on Thu Jan 11 11:14:05 2018
+To run this file,you need these files:
+1.CTSeventList_4589.txt
 
 @author: xiaoxu
 """
